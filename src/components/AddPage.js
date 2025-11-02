@@ -7,7 +7,7 @@ function AddPage() {
 
   const getLocation = () => {
     if (!navigator.geolocation) {
-      alert("Twoja przeglądarka nie obsługuje geolokalizacji.");
+      alert("Your browser does not support geolocation.");
       return;
     }
     navigator.geolocation.getCurrentPosition(
@@ -15,13 +15,13 @@ function AddPage() {
         setLatitude(pos.coords.latitude.toFixed(5));
         setLongitude(pos.coords.longitude.toFixed(5));
       },
-      (err) => alert("Błąd lokalizacji: " + err.message)
+      (err) => alert("Location error: " + err.message)
     );
   };
 
   const saveNote = async () => {
     if (!text || !latitude || !longitude) {
-      alert("Wypełnij wszystkie pola.");
+      alert("Please fill in all fields.");
       return;
     }
 
@@ -49,11 +49,11 @@ function AddPage() {
         }),
       });
       const data = await res.json();
-      console.log("Zapisano w API:", data);
-      alert("Zapisano wspomnienie 💛 (także w API)");
+      console.log("Saved in API:", data);
+      alert("Notes saved (also in API)");
     } catch (err) {
-      console.error("Błąd API:", err);
-      alert("Błąd przy zapisie w API");
+      console.error("API error:", err);
+      alert("Error while writing to API");
     }
 
     setText("");
@@ -63,29 +63,29 @@ function AddPage() {
 
   return (
     <div className="page">
-      <h2>Dodaj nowe wspomnienie</h2>
+      <h2>Create a note </h2>
       <textarea
-        placeholder="Napisz, co czujesz..."
+        placeholder="Write here..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
       <div className="coords">
         <input
           type="text"
-          placeholder="Szerokość"
+          placeholder="Width"
           value={latitude}
           onChange={(e) => setLatitude(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Długość"
+          placeholder="Length"
           value={longitude}
           onChange={(e) => setLongitude(e.target.value)}
         />
-        <button onClick={getLocation}>Twoje współrzędne 📍</button>
+        <button onClick={getLocation}>Your coordinates</button>
       </div>
       <button className="btn" onClick={saveNote}>
-        Zapisz
+        Save
       </button>
     </div>
   );
