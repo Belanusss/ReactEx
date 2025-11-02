@@ -5,7 +5,6 @@ function NotesList() {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    // Локальные заметки
     const localNotes = JSON.parse(localStorage.getItem("notes") || "[]");
 
     // Загрузка данных из API
@@ -33,11 +32,15 @@ function NotesList() {
       ) : (
         notes.map((n) => (
           <div key={n.id} className="note-item">
-            <p>{n.text}</p>
-            <p>
-              {n.latitude}, {n.longitude}
-            </p>
-            <Link className="details" to={`/details/${n.id}`}>
+            <div className="alignl">
+              <p>{n.text}</p>
+            </div>
+            <div className="alignr">
+              <p>{n.latitude} </p>
+              <p>{n.longitude}
+              </p>
+            </div>
+              <Link className="details" to={`/details/${n.id}`}>
               Look
             </Link>
           </div>
