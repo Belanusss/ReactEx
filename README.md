@@ -1,54 +1,16 @@
-Aplikacja React wykorzystująca GPS
+Field Notes - krótki opis działania aplikacji
 
-Aplikacja React może uzyskać aktualną lokalizację użytkownika, czyli szerokość i długość geograficzną.
-Odbywa się to za pomocą wbudowanego API Geolocation, które uzyskuje dostęp do usług systemowych przeglądarki (na komputerze lub telefonie).
+Field Notes - aplikacja mobilna oparta na React Native, która umożliwia użytkownikom tworzenie notatek opartych na lokalizacji i opisach
 
-Jak to działa
-1. Sprawdzanie dostępności geolokalizacji
+Aplikacja umożliwia utworzenie notatki wykorzystując aktualną geolokalizację.
+Jeżeli nie ma dostępu do Internetu lub danych geograficznych, pojawia się błąd "Location error: User denied Geolocation"
+Jeśli wszystkie uprawnienia są obecne, rekord z opisem i współrzędnymi zostanie pomyślnie utworzony.
+Na przykład:
+<img width="476" height="508" alt="image" src="https://github.com/user-attachments/assets/76623d95-172e-4a07-b6c1-816c5b35cbc4" />
 
-Najpierw aplikacja sprawdza, czy przeglądarka obsługuje usługi lokalizacji.
-Jeśli funkcja jest niedostępna (np. w starszej przeglądarce), wyświetlany jest następujący komunikat:
+Po zapisaniu współrzędnych pojawi się komunikat "Notes saved (also in API)"
 
-„Geolokalizacja niedostępna w tej sprawie”.
+W zakładce Notes możesz przeglądać wszystkie wpisy wraz z czasem i współrzędnymi:
+<img width="438" height="849" alt="image" src="https://github.com/user-attachments/assets/6e4a0787-bbfa-4ab3-b992-c67bfc95b073" />
 
-2. Sprawdzanie uprawnień
 
-Przeglądarka nie może określić lokalizacji użytkownika bez jego zgody.
-Gdy aplikacja wywołuje navigator.geolocation.getCurrentPosition(), pojawia się okno dialogowe z pytaniem:
-
-„Czy zezwolić tej stronie na dostęp do lokalizacji?”
-Jeśli użytkownik odmówi, aplikacja wyświetla komunikat o błędzie.
-
-3. Pobieranie współrzędnych
-
-Jeśli użytkownik wyraził zgodę, przeglądarka zwraca dwie wartości:
-
-szerokość geograficzna — szerokość geograficzna
-
-długość geograficzna — długość geograficzna
-
-Te wartości są przekazywane do stanu React (poprzez useState) i wyświetlane na ekranie.
-
-Przykład wyświetlania danych
-Szerokość: 50.06143
-Długość: 19.93658
-
-Testowanie
-Dodawanie logiki
-
-Do działania tej funkcji wystarczy standardowy kod JavaScript — nie są wymagane żadne dodatkowe biblioteki.
-
-Przykładowa funkcja:
-navigator.geolocation.getCurrentPosition(
-(position) => {
-setLatitude(position.coords.latitude);
-setLongitude(position.coords.longitude);
-},
-(error) => {
-alert('Lokalizacja niemożliwa: ' + error.message);
-}
-);
-
-Uruchamianie w przeglądarce
-
-Po kliknięciu przycisku „Pobierz lokalizację” aplikacja poprosi o pozwolenie i wyświetli aktualne współrzędne użytkownika.
