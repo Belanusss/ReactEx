@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import StartPage from "./components/StartPage";
+import StartPage from "./StartPage/StartPage";
 import AddPage from "./components/AddPage";
-import NotesList from "./components/NotesList";
-import NoteDetails from "./components/NoteDetails";
+import NotesList from "./Note/NotesList";
+import NoteDetails from "./Note/NoteDetails";
 import "./App.css";
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
     <Router>
       <div className="nav">
         <Link to="/">Start</Link>
-        <Link to="/add">Dodaj</Link>
-        <Link to="/list">Wspomnienia</Link>
+        <Link to="/add">Add</Link>
+        <Link to="/list">Notes</Link>
       </div>
 
       <Routes>

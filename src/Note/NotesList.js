@@ -27,18 +27,18 @@ function NotesList() {
 
   return (
     <div className="page">
-      <h2>Twoje wspomnienia</h2>
+      <h2>Your Notes</h2>
       {notes.length === 0 ? (
-        <p>Brak zapisanych wspomnień.</p>
+        <p>No Notes.</p>
       ) : (
         notes.map((n) => (
           <div key={n.id} className="note-item">
             <p>{n.text}</p>
             <p>
-              📍 {n.latitude}, {n.longitude}
+              {n.latitude}, {n.longitude}
             </p>
             <Link className="details" to={`/details/${n.id}`}>
-              Zobacz
+              Look
             </Link>
           </div>
         ))

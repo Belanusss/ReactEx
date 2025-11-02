@@ -9,21 +9,21 @@ function NoteDetails() {
   if (!note)
     return (
       <div className="page">
-        <p>Nie znaleziono wspomnienia.</p>
-        <Link to="/list">← Powrót</Link>
+        <p>No notes.</p>
+        <Link to="/list">Back</Link>
       </div>
     );
 
   return (
     <div className="page">
-      <h2>Wspomnienie</h2>
+      <h2>Notes</h2>
       <p>{note.text}</p>
       <p>
-        📍 {note.latitude}, {note.longitude}
+         {note.latitude}, {note.longitude}
       </p>
-      <p>🕓 {note.date}</p>
+      <p> {note.date}</p>
       <Link to="/list" className="btn">
-        Powrót
+        Back
       </Link>
     </div>
   );
