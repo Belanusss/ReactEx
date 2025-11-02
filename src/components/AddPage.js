@@ -33,11 +33,11 @@ function AddPage() {
       date: new Date().toLocaleString("pl-PL"),
     };
 
-    // Локальное сохранение
+    
     const existing = JSON.parse(localStorage.getItem("notes") || "[]");
     localStorage.setItem("notes", JSON.stringify([...existing, newNote]));
 
-    // Отправка данных на API
+    
     try {
       const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
         method: "POST",

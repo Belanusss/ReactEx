@@ -7,11 +7,11 @@ function NotesList() {
   useEffect(() => {
     const localNotes = JSON.parse(localStorage.getItem("notes") || "[]");
 
-    // Загрузка данных из API
+    
     fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
       .then((res) => res.json())
       .then((apiNotes) => {
-        // Преобразуем формат API, чтобы совпадал с локальным
+        
         const formatted = apiNotes.map((p) => ({
           id: p.id,
           text: p.title,
